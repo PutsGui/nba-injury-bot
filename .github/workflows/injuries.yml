@@ -1,0 +1,51 @@
+name: NBA injuries
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # de 30 em 30 minutos
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "changes = só mudanças, summary = resumo completo"
+        type: choice
+        options:
+          - changes
+          - summary
+        default: changes
+
+permissions:
+  contents: write
+
+concurrency:
+  group: injuries
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Correr o bot
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          MODE: ${{ github.event.inputs.mode }}
+        run: |
+          if [ "$MODE" = "summary" ]; then
+            python nba_injuries.py --summary
+          else
+            python nba_injuries.py
+          fi
+
+      - name: Guardar estado
+        run: |
+          if [ -f state.json ]; then
+            git config user.name "injury-bot"
+            git config user.email "injury-bot@users.noreply.github.com"
+            git add state.json
+            git diff --cached --quiet || (git commit -m "update state" && git push)
+          fi

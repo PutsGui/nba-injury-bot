@@ -17,7 +17,7 @@ from pathlib import Path
 
 ESPN_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/injuries"
 DEFAULT_STATE = Path(__file__).with_name("state.json")
-UA = "Mozilla/5.0 (nba-injury-bot)"
+UA = "DiscordBot (https://github.com/PutsGui/nba-injury-bot, 1.0)"  # usado só no Discord
 
 # Ordem de gravidade e cor de cada estado
 EMOJI = {
@@ -46,10 +46,35 @@ def severity(status):
     return len(ORDER)
 
 
+BROWSER_UAS = [
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:132.0) Gecko/20100101 Firefox/132.0",
+]
+
+
 def fetch():
-    req = urllib.request.Request(ESPN_URL, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)
+    """Vai buscar o feed da ESPN, tentando cabeçalhos de browser se for recusado."""
+    last = None
+    for ua in BROWSER_UAS:
+        req = urllib.request.Request(
+            ESPN_URL,
+            headers={
+                "User-Agent": ua,
+                "Accept": "application/json, text/plain, */*",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Referer": "https://www.espn.com/",
+            },
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            print(f"ESPN devolveu HTTP {e.code} com '{ua[:40]}...'")
+            last = e
+        except urllib.error.URLError as e:
+            print(f"Erro de rede: {e.reason}")
+            last = e
+    raise last
 
 
 def parse(data):

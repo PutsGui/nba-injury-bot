@@ -2,15 +2,18 @@ name: NBA injuries
 
 on:
   schedule:
-    - cron: "*/30 * * * *"   # de 30 em 30 minutos
+    - cron: "*/30 * * * *"   # mudanças, de 30 em 30 minutos
+    - cron: "0 20 * * *"     # resumo do dia (20:00 UTC = 20:00 Lisboa no inverno, 21:00 no verão)
   workflow_dispatch:
     inputs:
       mode:
-        description: "changes = só mudanças, summary = resumo completo"
+        description: "changes = só mudanças | digest = resumo do dia | summary = lista completa | check = diagnóstico (não posta)"
         type: choice
         options:
           - changes
+          - digest
           - summary
+          - check
         default: changes
 
 permissions:
@@ -29,17 +32,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
+
+      - name: Instalar leitor do relatório oficial
+        continue-on-error: true   # se falhar, o bot continua só com a ESPN
+        run: pip install -r requirements.txt
 
       - name: Correr o bot
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          MODE: ${{ github.event.inputs.mode }}
+          INPUT_MODE: ${{ github.event.inputs.mode }}
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
         run: |
-          if [ "$MODE" = "summary" ]; then
-            python nba_injuries.py --summary
-          else
-            python nba_injuries.py
-          fi
+          MODE="${INPUT_MODE:-changes}"
+          if [ "$EVENT_NAME" = "schedule" ] && [ "$SCHEDULE" = "0 20 * * *" ]; then MODE=digest; fi
+          echo "Modo: $MODE"
+          python nba_injuries.py --mode "$MODE"
 
       - name: Guardar estado
         run: |

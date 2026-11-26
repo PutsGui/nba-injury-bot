@@ -746,15 +746,15 @@
    "team": "New York Knicks"
   },
   "mitchell robinson|celtics": {
-   "comment": "Robinson (illness) is out for Tuesday's game against Washington, Taylor Snow of the Celtics' official site reports.",
+   "comment": "Robinson (illness) is questionable for Friday's game against the Hawks.",
    "detail": "Illness",
    "espn_status": "Out",
    "name": "Mitchell Robinson",
-   "nba_reason": "",
-   "nba_seen": "",
-   "nba_status": "",
+   "nba_reason": "Illness",
+   "nba_seen": "2026-11-26T19:28:58.052571+00:00",
+   "nba_status": "Questionable",
    "return": "2026-11-27",
-   "status": "Out",
+   "status": "Questionable",
    "team": "Boston Celtics"
   },
   "moritz wagner|nets": {
@@ -816,6 +816,42 @@
    "return": "2026-11-27",
    "status": "Out",
    "team": "Toronto Raptors"
+  },
+  "nba|celtics|amari williams": {
+   "comment": "",
+   "detail": "G League - Two-Way",
+   "espn_status": "",
+   "name": "Amari Williams",
+   "nba_reason": "G League - Two-Way",
+   "nba_seen": "2026-11-26T19:28:58.052571+00:00",
+   "nba_status": "Out",
+   "return": "",
+   "status": "Out",
+   "team": "Boston Celtics"
+  },
+  "nba|celtics|devin carter": {
+   "comment": "",
+   "detail": "G League - Two-Way",
+   "espn_status": "",
+   "name": "Devin Carter",
+   "nba_reason": "G League - Two-Way",
+   "nba_seen": "2026-11-26T19:28:58.052571+00:00",
+   "nba_status": "Out",
+   "return": "",
+   "status": "Out",
+   "team": "Boston Celtics"
+  },
+  "nba|celtics|dillon mitchell": {
+   "comment": "",
+   "detail": "G League - Two-Way",
+   "espn_status": "",
+   "name": "Dillon Mitchell",
+   "nba_reason": "G League - Two-Way",
+   "nba_seen": "2026-11-26T19:28:58.052571+00:00",
+   "nba_status": "Out",
+   "return": "",
+   "status": "Out",
+   "team": "Boston Celtics"
   },
   "nikola topic|thunder": {
    "comment": "Topic (hip) is listed as out for Wednesday's game versus Minnesota.",

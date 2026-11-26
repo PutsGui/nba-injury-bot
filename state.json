@@ -220,13 +220,13 @@
   "de aaron fox|spurs": {
    "comment": "Fox (shin) has been ruled out for Wednesday's game against Portland, Jeff McDonald of the San Antonio Express-News reports.",
    "detail": "Right Lower Leg Bruise",
-   "espn_status": "Out",
+   "espn_status": "Day-To-Day",
    "name": "De'Aaron Fox",
-   "nba_reason": "Right Shin Contusion",
-   "nba_seen": "2026-11-26T04:31:22.163648+00:00",
-   "nba_status": "Out",
+   "nba_reason": "",
+   "nba_seen": "",
+   "nba_status": "",
    "return": "2026-11-27",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team": "San Antonio Spurs"
   },
   "dejounte murray|pelicans": {
@@ -597,7 +597,7 @@
    "nba_reason": "",
    "nba_seen": "",
    "nba_status": "",
-   "return": "2026-11-25",
+   "return": "2026-12-01",
    "status": "Day-To-Day",
    "team": "New Orleans Pelicans"
   },
@@ -1108,13 +1108,13 @@
   "zach lavine|kings": {
    "comment": "LaVine (knee) is listed as out for Wednesday's game versus the Warriors.",
    "detail": "Right Knee Soreness",
-   "espn_status": "Out",
+   "espn_status": "Day-To-Day",
    "name": "Zach LaVine",
-   "nba_reason": "Right Knee Soreness",
-   "nba_seen": "2026-11-26T04:31:22.163648+00:00",
-   "nba_status": "Out",
+   "nba_reason": "",
+   "nba_seen": "",
+   "nba_status": "",
    "return": "2026-11-29",
-   "status": "Out",
+   "status": "Day-To-Day",
    "team": "Sacramento Kings"
   }
  }

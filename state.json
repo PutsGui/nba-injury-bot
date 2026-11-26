@@ -217,6 +217,18 @@
    "status": "Out",
    "team": "Atlanta Hawks"
   },
+  "colin castleton|magic": {
+   "comment": "Castleton totaled five points (2-4 FG, 1-1 3Pt) and four rebounds in seven minutes during Tuesday's 132-116 preseason win over the Cavaliers.",
+   "detail": "Calf Soreness",
+   "espn_status": "Day-To-Day",
+   "name": "Colin Castleton",
+   "nba_reason": "",
+   "nba_seen": "",
+   "nba_status": "",
+   "return": "2026-11-27",
+   "status": "Day-To-Day",
+   "team": "Orlando Magic"
+  },
   "de aaron fox|spurs": {
    "comment": "Fox (shin) has been ruled out for Wednesday's game against Portland, Jeff McDonald of the San Antonio Express-News reports.",
    "detail": "Right Lower Leg Bruise",
@@ -386,7 +398,7 @@
    "team": "Portland Trail Blazers"
   },
   "jalen duren|pistons": {
-   "comment": "Duren (hamstring) is being assigned to the Motor City Cruise on Wednesday for practice as he ramps up for a return, Eric Vincent of ClutchPoints.com reports.",
+   "comment": "Detroit recalled Duren (hamstring) from the G League's Motor City Cruise on Wednesday.",
    "detail": "Right Hamstring Strain",
    "espn_status": "Out",
    "name": "Jalen Duren",
